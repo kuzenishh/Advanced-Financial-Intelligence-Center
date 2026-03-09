@@ -1,0 +1,95 @@
+---
+enhanced_multi_source_market_data_collection:
+  description: 'MANDATORY: Use the Real Market Data Fetcher tool with ticker="{ticker}"
+    and data_source="Yahoo Finance". You MUST call this tool first before any analysis.
+    Extract and report the EXACT data returned by the tool. Do not generate fake or
+    estimated market data.'
+  expected_output: 'Complete historical market dataset including: 30+ days of OHLCV
+    data with exact dates, REAL daily returns array, ACTUAL standard deviation calculated
+    from price movements (not hypothetical), annualized volatility, quality metrics,
+    and full JSON data structure. Must include mathematical transparency showing how
+    standard deviation was calculated from actual price data.'
+  agent: enhanced_real_time_market_data_specialist
+technical_analysis:
+  description: 'MANDATORY TOOL USAGE: You MUST call the Technical Indicators Calculator
+    tool with ticker="{ticker}" and period_days=30. DO NOT generate any analysis without
+    first calling this tool. Use the exact data returned by the tool. Do not create
+    placeholder or estimated values.'
+  expected_output: 'AUTHENTIC technical analysis report with mathematically validated
+    indicators: RSI(14) with realistic values, MACD with genuine oscillator values,
+    Bollinger Bands showing proper relationships, SMA(20) with percentage deviation,
+    complete calculation details, and quality confidence scores showing 100% validation.'
+  agent: enhanced_technical_analyst
+  context:
+  - enhanced_multi_source_market_data_collection
+alternative_data_intelligence_analysis:
+  description: Analyze alternative data sources for {ticker} including social media
+    sentiment (Reddit, Twitter, Discord), Google Trends analysis, on-chain metrics
+    (for crypto), options flow patterns, and insider trading activity. Correlate alternative
+    data with traditional market data to identify unique insights and market patterns.
+  expected_output: 'Comprehensive alternative data intelligence report including:
+    social sentiment analysis with confidence scores, Google Trends correlation, on-chain
+    metrics (if applicable), options flow analysis, insider trading insights, cross-correlation
+    analysis between data sources, and unique market intelligence findings with actionable
+    recommendations.'
+  agent: alternative_data_intelligence_analyst
+  context:
+  - enhanced_multi_source_market_data_collection
+comprehensive_news_and_economic_analysis:
+  description: Perform comprehensive analysis combining recent news sentiment for
+    {ticker} with economic events and market-moving announcements. Use manual keyword
+    counting for sentiment scoring while simultaneously analyzing upcoming economic
+    events, central bank decisions, and their correlation with market movements. Provide
+    integrated assessment of news sentiment and macroeconomic factors.
+  expected_output: 'Integrated analysis report including: manual keyword-based sentiment
+    scoring, weighted sentiment scores, economic events calendar with impact assessment,
+    correlation analysis between news and economic events, market timing recommendations,
+    and comprehensive market impact predictions with confidence levels.'
+  agent: comprehensive_news_and_economic_events_analyst
+  context:
+  - enhanced_multi_source_market_data_collection
+data_quality_validation:
+  description: Use the Financial Data Validator tool to validate market data quality
+    for {ticker}. Verify data completeness, check for realistic price ranges and movements,
+    ensure sufficient historical data (minimum 30 days), and validate technical indicator
+    authenticity. Reject any suspicious placeholder values.
+  expected_output: 'Data validation report with: completeness score for historical
+    data, price movement validation results, technical indicator authenticity check,
+    data quality rating (EXCELLENT/GOOD/POOR), identification of any suspicious patterns
+    or placeholder values, and final PASS/FAIL validation status for proceeding with
+    investment analysis.'
+  agent: enhanced_real_time_market_data_specialist
+  context:
+  - enhanced_multi_source_market_data_collection
+  - technical_analysis
+generate_investment_recommendation:
+  description: 'Extract COMPLETE historical price dataset and REAL standard deviation
+    from market data collection task. Calculate VaR(95%) using ACTUAL formula: VaR
+    = current_price - (1.65 * real_calculated_std_dev). Use ONLY validated technical
+    indicators from technical analysis task (reject any placeholder values). Create
+    mathematically rigorous investment report.'
+  expected_output: 'Rigorous investment report with: Executive summary table, VaR(95%)
+    using REAL standard deviation from historical data (show calculation: current_price
+    - 1.65*actual_std_dev), AUTHENTIC technical indicators with mathematical validation,
+    price targets based on real analysis, detailed risk assessment using actual volatility,
+    portfolio recommendations, and complete mathematical transparency showing all
+    calculation steps.'
+  agent: risk_assessment_and_investment_advisor
+  context:
+  - enhanced_multi_source_market_data_collection
+  - comprehensive_news_and_economic_analysis
+  - technical_analysis
+  - alternative_data_intelligence_analysis
+  - data_quality_validation
+coordinate_market_analysis:
+  description: Supervise and coordinate the comprehensive financial market analysis
+    workflow for {ticker} in {market_type} market. Ensure all analysis components
+    (data collection, sentiment analysis, technical analysis, recommendations) are
+    completed properly and provide oversight to maintain analysis quality and consistency.
+  expected_output: 'Quality assurance summary confirming: mathematical accuracy of
+    technical calculations, proper risk assessment completion, structured markdown
+    formatting with tables, comprehensive analysis coverage, and validation of investment
+    recommendation methodology. Include final report structure assessment.'
+  agent: financial_market_analysis_supervisor
+  context:
+  - generate_investment_recommendation

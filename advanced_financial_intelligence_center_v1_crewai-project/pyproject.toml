@@ -1,0 +1,24 @@
+[project]
+name = "advanced_financial_intelligence_center"
+version = "0.1.0"
+description = "advanced_financial_intelligence_center using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[litellm,tools]==1.10.1",
+]
+
+[project.scripts]
+advanced_financial_intelligence_center = "advanced_financial_intelligence_center.main:run"
+run_crew = "advanced_financial_intelligence_center.main:run"
+train = "advanced_financial_intelligence_center.main:train"
+replay = "advanced_financial_intelligence_center.main:replay"
+test = "advanced_financial_intelligence_center.main:test"
+run_with_trigger = "advanced_financial_intelligence_center.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
